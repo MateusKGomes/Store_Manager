@@ -20,7 +20,7 @@ const createProduct = async (req, res) => {
   if (result.type) {
     return res.status(404).json(result.message);
   }
-  return res.status(201).json({ id: result.message.insertId, name, });
+  return res.status(201).json({ id: result.message.insertId, name });
 };
 
 module.exports = {

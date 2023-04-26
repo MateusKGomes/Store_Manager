@@ -5,8 +5,7 @@ const getAll = async () => {
   return { type: null, message: result };
 };
 
-const findById = async ({id}) => {
-  console.log('logid', id);
+const findById = async ({ id }) => {
   const result = await productsModels.findById(id);
   if (!result) {
     return { type: 404, message: { message: 'Product not found' } };
