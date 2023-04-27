@@ -4,16 +4,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/status",
-    "url": "http://localhost:3001/products",
+    "url": "http://localhost:3001/sales",
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-26T18:06:41.304Z",
-    "modified": "2023-04-26T21:27:15.341Z",
+    "modified": "2023-04-27T21:09:53.159Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Produto11\"\n}",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 3\n\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 13\n  }\n]",
       "form": []
     },
     "tests": []

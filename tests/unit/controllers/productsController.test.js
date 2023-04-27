@@ -1,7 +1,11 @@
-const { expect } = require('chai');
+const chai = require('chai');
 const sinon = require('sinon');
+const sinonChai = require('sinon-chai');
+chai.use(sinonChai);
+const { expect } = chai;
 const productsServices = require('../../../src/services/productsServices');
 const productsControllers = require('../../../src/controllers/productsControllers');
+
 
 describe('Testa funções de Controllers', () => {
   afterEach(() => sinon.restore());
@@ -21,7 +25,7 @@ describe('Testa funções de Controllers', () => {
       res.json = sinon.stub().returns();
 
       await productsControllers.getAll(req, res);
-      expect(res.status).to.been.an('function');
+      expect(res.status).to.have.been.calledWith(200);
     });
     it('Teste a função findById', async () => {
       sinon.stub(productsServices, 'findById').resolves({
@@ -34,11 +38,11 @@ describe('Testa funções de Controllers', () => {
       res.json = sinon.stub().returns();
 
       await productsControllers.findById(req, res);
-      expect(res.json).to.been.an('function');
+      expect(res.status).to.have.been.calledWith(200);
     });
   });
   describe('Testa casos de erro', () => {
-    it('Testa erro na função findById', async () => {
+    describe('Testa erro na função findById', async () => {
       it('Teste a função findById', async () => {
         sinon.stub(productsServices, 'findById').resolves({
           type: 404,
@@ -48,9 +52,11 @@ describe('Testa funções de Controllers', () => {
         const res = {};
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns();
-
         await productsControllers.findById(req, res);
-        expect(res.json).to.been.an('function');
+        expect(res.status).to.have.been.calledWith(404);
+        expect(res.json).to.have.been.calledWith({
+          message: 'Product not found'
+        });
       });
     });
   });
