@@ -8,7 +8,7 @@ app.use(express.json());
 app.use('/products', productsRoutes);
 app.use('/sales', salesRoutes);
 
-app.get('/status', (req, res) => res.status(200).json({ message: 'funcionando' }));
+app.get('/status', (req, res) => res.status(200).json({ message: 'On fire!' }));
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();

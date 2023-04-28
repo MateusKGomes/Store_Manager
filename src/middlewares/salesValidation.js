@@ -26,7 +26,6 @@ const quantityVailidation = async (req, res, next) => {
     return res.status(400).json({ message: '"quantity" is required' });
   }
   const validateValue = getBodyValidation.map((el) => el.quantity).every((value) => value > 0);
-  console.log('validate', validateValue);
   if (!validateValue) {
     return res.status(422).json({ message: '"quantity" must be greater than or equal to 1' });
   }
