@@ -12,8 +12,7 @@ const getAll = async (req, res) => {
 };
 
 const findById = async (req, res) => {
-  const { id } = req.params;
-  const result = await salesService.findById(id);
+  const result = await salesService.findById(req.params);
   if (result.type) {
     return res.status(404).json(result.message);
   }

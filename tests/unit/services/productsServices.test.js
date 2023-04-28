@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const productsModels = require('../../../src/models/productsModels');
 const productsServices = require('../../../src/services/productsServices');
 
-describe('Teste das camadas de Services', () => {
+describe('Teste das camadas de Products Services', () => {
   afterEach(() => sinon.restore());
   describe('Testa casos de sucesso', () => {
     it('Testa a chamada da função getAll', async () => {
