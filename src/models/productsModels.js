@@ -38,9 +38,21 @@ const putProduct = async (bodyParam, Idparam) => {
   return false;
 };
 
+const deleteProduct = async (Idparam) => {
+  const checkId = await findById(Idparam);
+  if (checkId) {
+    await connection.execute(
+      'DELETE FROM StoreManager.products WHERE id = (?);', [Idparam],
+    );
+    return true;
+  }
+  return false;
+}
+
 module.exports = {
   getAll,
   findById,
   createProduct,
   putProduct,
+  deleteProduct,
 };
