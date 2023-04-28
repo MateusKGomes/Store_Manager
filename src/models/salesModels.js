@@ -40,8 +40,6 @@ const findById = async (param) => {
   return result;
 };
 
-const teste = 'teste';
-
 module.exports = {
   createSales,
   getAll,

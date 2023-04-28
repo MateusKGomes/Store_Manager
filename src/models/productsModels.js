@@ -47,7 +47,7 @@ const deleteProduct = async (Idparam) => {
     return true;
   }
   return false;
-}
+};
 
 module.exports = {
   getAll,
