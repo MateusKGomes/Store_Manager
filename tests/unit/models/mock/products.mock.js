@@ -8,7 +8,11 @@ const mockFindById = [
   { id: 1, name: 'Martelo de Thor' }
 ];
 
+const mockPutProduct = [ { id: '1', name: 'Martelo do Thor' } ];
+
+
 module.exports = {
   mockGetAll,
   mockFindById,
+  mockPutProduct,
 }

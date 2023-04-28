@@ -6,7 +6,6 @@ const { expect } = chai;
 const productsServices = require('../../../src/services/productsServices');
 const productsControllers = require('../../../src/controllers/productsControllers');
 
-
 describe('Testa funções de Controllers', () => {
   afterEach(() => sinon.restore());
   describe('Testa casos de sucesso', () => {
@@ -39,6 +38,29 @@ describe('Testa funções de Controllers', () => {
 
       await productsControllers.findById(req, res);
       expect(res.status).to.have.been.calledWith(200);
+    });
+    it('Testa se a função putProduct', async () => {
+      sinon.stub(productsServices, 'putProduct').resolves({
+        type: null,
+        message: { id: 1, name: 'Martelo de Thor' }
+      })
+      const id = 1;
+      const req = {
+        body: {
+          id,
+          name: 'Martelo de Thor',
+        },
+      };
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await productsControllers.putProduct(req, res);
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith({
+        id: 1,
+        name: 'Martelo de Thor'
+      });
     });
   });
   describe('Testa casos de erro', () => {

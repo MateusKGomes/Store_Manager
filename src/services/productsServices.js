@@ -21,7 +21,7 @@ const createProduct = async (name) => {
   return { type: null, message: result };
 };
 
-const putProduct = async (name, { id }) => {
+const putProduct = async ({ name }, { id }) => {
   const result = await productsModels.putProduct(name, id);
   if (!result) {
     return { type: 404, message: { message: 'Product not found' } };

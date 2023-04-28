@@ -23,8 +23,7 @@ const createProduct = async (req, res) => {
 };
 
 const putProduct = async (req, res) => {
-  const { name } = req.body;
-  const result = await productsServices.putProduct(name, req.params);
+  const result = await productsServices.putProduct(req.body, req.params);
   if (result.type) {
     return res.status(404).json(result.message);
   }

@@ -19,7 +19,6 @@ describe('Testa as funções de Sales Models', () => {
       const result = await productsModels.findById(id);
       expect(result).to.been.an('array');
       expect(result).to.been.length(2);
-
     });
   });
 });
