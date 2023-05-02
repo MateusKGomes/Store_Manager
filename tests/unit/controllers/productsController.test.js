@@ -63,8 +63,31 @@ describe('Testa funções de Controllers', () => {
       });
     });
   });
+  it('Testa a função createProduct', async () => {
+    sinon.stub(productsServices, 'createProduct').resolves({
+      type: null,
+      message: {
+      fieldCount: 0,
+      affectedRows: 1,
+      insertId: 9,
+      info: '',
+      serverStatus: 2,
+      warningStatus: 0
+      } 
+    });
+    const req = {
+      body: {
+        name: 'Mouse',
+      },
+    };
+    const res = {};
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    await productsControllers.createProduct(req, res);
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith({ id: 9, name: 'Mouse' });
+  });
   describe('Testa casos de erro', () => {
-    describe('Testa erro na função findById', async () => {
       it('Teste a função findById', async () => {
         sinon.stub(productsServices, 'findById').resolves({
           type: 404,
@@ -79,7 +102,6 @@ describe('Testa funções de Controllers', () => {
         expect(res.json).to.have.been.calledWith({
           message: 'Product not found'
         });
-      });
     });
   });
 });

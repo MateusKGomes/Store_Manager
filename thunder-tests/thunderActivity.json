@@ -4,16 +4,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/status",
-    "url": "http://localhost:3001/products/1",
-    "method": "PUT",
+    "url": "http://localhost:3001/products",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-04-26T18:06:41.304Z",
-    "modified": "2023-04-28T18:48:17.206Z",
+    "modified": "2023-05-02T20:22:23.215Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Martelo do Thor\"\n}",
+      "raw": "{\n  \"name\": \"Mouse\"\n}",
       "form": []
     },
     "tests": []

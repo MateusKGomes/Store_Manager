@@ -3,7 +3,12 @@ const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const productsModels = require('../../../src/models/productsModels');
 
-const { mockGetAll, mockFindById, mockPutProduct } = require('./mock/products.mock');
+const {
+  mockGetAll,
+  mockFindById,
+  mockPutProduct,
+  mockCreateProduct,
+} = require('./mock/products.mock');
 
 describe('Teste das camadas de Model', () => {
   afterEach(() => sinon.restore());
@@ -30,5 +35,12 @@ describe('Teste das camadas de Model', () => {
     }, id);
     expect(result).to.been.an('object');
     expect(result.name.name).to.been.equal('Martelo do Thor');
+  });
+  it('Testa a função createProduct', async () => {
+    sinon.stub(connection, 'execute').resolves([mockCreateProduct]);
+    const result = await productsModels.createProduct({
+      name: 'Garrafinha de água'
+    });
+    expect(result).to.been.an('array');
   });
 });

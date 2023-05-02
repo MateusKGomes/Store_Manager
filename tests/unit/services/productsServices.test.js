@@ -35,7 +35,16 @@ describe('Teste das camadas de Products Services', () => {
     const result = await productsServices.putProduct({
       name: 'Martelo do Thor'
     }, id);
-    console.log(result.message);
+    expect(result).to.been.an('object');
+    expect(result.message).to.been.an('array');
+  });
+  it('Testa se a função CreateProduct', async () => {
+    sinon.stub(productsModels, 'createProduct').resolves([{
+      name: 'Martelo do Thor'
+    }])
+    const result = await productsServices.createProduct({
+      name: 'Martelo do Thor'
+    });
     expect(result).to.been.an('object');
     expect(result.message).to.been.an('array');
   });
