@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const productsModels = require('../../../src/models/productsModels');
 const productsServices = require('../../../src/services/productsServices');
-const { mockPutProduct } = require('../models/mock/products.mock');
+const { mockPutProduct, mockDeleteProduct } = require('../models/mock/products.mock');
 
 describe('Teste das camadas de Products Services', () => {
   afterEach(() => sinon.restore());
@@ -47,6 +47,13 @@ describe('Teste das camadas de Products Services', () => {
     });
     expect(result).to.been.an('object');
     expect(result.message).to.been.an('array');
+  });
+  it('Testa se a função DeleteProduct', async () => {
+    sinon.stub(productsModels, 'deleteProduct').resolves([mockDeleteProduct])
+    const id = 10;
+    const result = await productsServices.deleteProduct(id);
+    console.log(result);
+    expect(result).to.been.an('object');
   });
   describe('Testa casos de erro', () => {
     it('Testa erro na função findByID', async () => {

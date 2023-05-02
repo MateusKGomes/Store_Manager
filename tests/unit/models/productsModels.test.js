@@ -8,6 +8,7 @@ const {
   mockFindById,
   mockPutProduct,
   mockCreateProduct,
+  mockDeleteProduct,
 } = require('./mock/products.mock');
 
 describe('Teste das camadas de Model', () => {
@@ -42,5 +43,11 @@ describe('Teste das camadas de Model', () => {
       name: 'Garrafinha de água'
     });
     expect(result).to.been.an('array');
+  });
+  it('Testa a função DeleteProduct', async () => {
+    sinon.stub(connection, 'execute').resolves([mockDeleteProduct]);
+    const id = 1;
+    const result = await productsModels.deleteProduct(id);
+    expect(result).to.been.equal(true);
   });
 });

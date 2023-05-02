@@ -87,6 +87,16 @@ describe('Testa funções de Controllers', () => {
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith({ id: 9, name: 'Mouse' });
   });
+  it('Testa a função deleteProduct', async () => {
+    sinon.stub(productsServices, 'deleteProduct').resolves({ type: null, message: true });
+    const req = {};
+    const res = {};
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    await productsControllers.deleteProduct(req, res);
+    expect(res.status).to.have.been.calledWith(204);
+  });
   describe('Testa casos de erro', () => {
       it('Teste a função findById', async () => {
         sinon.stub(productsServices, 'findById').resolves({

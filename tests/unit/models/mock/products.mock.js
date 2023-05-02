@@ -19,9 +19,12 @@ const mockCreateProduct = [{
   warningStatus: 0
 }];
 
+const mockDeleteProduct = [{ id: 10 }]
+
 module.exports = {
   mockGetAll,
   mockFindById,
   mockPutProduct,
   mockCreateProduct,
+  mockDeleteProduct,
 }
