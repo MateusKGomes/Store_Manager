@@ -63,5 +63,12 @@ describe('Teste das camadas de Products Services', () => {
       expect(result).to.been.an('object');
       expect(result.message.message).to.been.equal('Product not found');
     })
+    it('Testa erro na função deleteProduct', async () => {
+      sinon.stub(productsModels, 'deleteProduct').resolves(undefined);
+      const id = 99999;
+      const result = await productsServices.deleteProduct(id);
+      expect(result).to.been.an('object');
+      expect(result.message.message).to.been.equal('Product not found');
+    });
   });
 });

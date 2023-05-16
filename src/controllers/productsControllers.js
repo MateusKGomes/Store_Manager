@@ -32,7 +32,6 @@ const putProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const result = await productsServices.deleteProduct(req.params);
-  console.log('resultdelete', result);
   if (result.type) {
     return res.status(404).json(result.message);
   }
